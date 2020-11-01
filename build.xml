@@ -1,0 +1,20 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+
+<project name="UnixTimeCalc2" default="deploy" basedir=".">
+   <target name="init">
+      <property name="sourceDir" value="src" />
+      <property name="outputDir" value="classes" />
+   </target>
+   <target name="clean" depends="init">
+      <delete dir="${outputDir}" />
+   </target>
+   <target name="prepare" depends="clean">
+      <mkdir dir="${outputDir}" />
+   </target>
+   <target name="compile" depends="prepare">
+     <javac srcdir="${sourceDir}" destdir="${outputDir}" includeantruntime="false" source="1.8" target="1.8"/>
+   </target>
+   <target name="deploy" depends="compile,init">
+	 <jar basedir="${outputDir}" destfile="UnixTimeCalc2.jar" compress="true" manifest="./MANIFEST.MF" />
+   </target>
+</project>
